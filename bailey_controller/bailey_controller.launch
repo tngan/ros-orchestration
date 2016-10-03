@@ -1,0 +1,5 @@
+<launch>
+  <node name="bailey_controller" pkg="bailey_flow" type="bailey_controller_node.py" output="screen">
+    <param name="recipe" type="string" value="$(find bailey_flow)/recipes/tol.yml" />
+  </node>
+</launch>
