@@ -6,13 +6,8 @@ takeoff:
   next: navigate
   first: true
 navigate:
-  includes: [point, avoidance]
-  next: examine
-examine:
-  includes: [deep, avoidance]
   next: back
 back:
-  includes: [point, avoidance]
   next: landings
 # end is a keyword and do not use it as the order name
 landing:

@@ -17,6 +17,7 @@ class Machine:
         self.terminate = False
 
     def step_over(self):
+        #
         self.state = self.next_state()
         self.history.push(self.state)
         self.unlock()

@@ -37,6 +37,7 @@ def bailey_controller_node():
         # kickstart the bailey node with current state
         # terminate when the recipe is played successfully
         # TODO timeout may need to make the machine more reliable
+        # TODO the services should shutdown itself after issuing the service request to step_over
 
         if machine.is_end():
             break
