@@ -8,7 +8,7 @@ takeoff:
 navigate:
   next: back
 back:
-  next: landings
+  next: landing
 # end is a keyword and do not use it as the order name
 landing:
   next: null
