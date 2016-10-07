@@ -2,17 +2,17 @@
 
 __version__ = '1.0.0'
 
-from recipe import Recipe
+from suite import Suite
 
-# this is a very simple state machine
-class Machine:
+# this is a very simple state conductor
+class Conductor:
 
     state = None
 
     def __init__(self, cfg):
-        self.state = Recipe.getInitialState(cfg)
+        self.state = Suite.getInitialState(cfg)
         self.history = []
-        self.recipe = Recipe.parseFromYml(cfg)
+        self.suite = Suite.parseFromYml(cfg)
         self.lock = False
         self.terminate = False
 
@@ -50,10 +50,10 @@ class Machine:
         return self.terminate
 
     def next_state(self):
-        return self.recipe[self.state].next
+        return self.suite[self.state].next
 
     def get_kickstart_topic(self):
-        state_info = self.recipe[self.state]
+        state_info = self.suite[self.state]
         if state_info.has_key('kickstart_topic'):
             return state_info.kickstart_topic
         else:

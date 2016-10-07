@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# This is a script constructing the interface of recipe
+# This is a script constructing the interface of suite
 
 __version__ = '1.0.0'
 
@@ -7,7 +7,7 @@ __version__ = '1.0.0'
 __yml_root__ = 'stream'
 __yml_state_name__ = 'state'
 
-class Recipe:
+class Suite:
 
     @staticmethod
     def parseFromYml(cfg):

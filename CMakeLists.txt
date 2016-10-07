@@ -15,12 +15,13 @@ generate_messages(DEPENDENCIES std_msgs)
 catkin_package(CATKIN_DEPENDS message_runtime std_msgs)
 
 catkin_install_python(PROGRAMS
-  controller/machine.py
-  controller/controller.py
+  src/conductor.py
+  src/suite.py
+  src/orchestration.py
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/orchestration
 )
 install(FILES
-  controller/orchestration.launch
-  recipes/*.yml
+  src/orchestration.launch
+  suites/*.yml
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/orchestration
 )
