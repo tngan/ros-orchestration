@@ -2,13 +2,12 @@
 # this yml is for simple take-off, examine then land state
 # the name of key and next should be the exactly same as module name (may have alias later on but not in 1.0)
 # abstract the avoidance into everywhere
-takeoff:
-  next: navigate
-  first: true
-navigate:
-  next: back
-back:
-  next: landing
-# end is a keyword and do not use it as the order name
-landing:
-  next: null
+stream:
+  - state: takeoff
+    next: navigate
+  - state: navigate
+    next: back
+  - state: back
+    next: landing
+  - state: landing
+    next: null

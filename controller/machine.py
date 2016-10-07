@@ -2,22 +2,21 @@
 
 __version__ = '1.0.0'
 
+from recipe import Recipe
+
 # this is a very simple state machine
 class Machine:
 
     state = None
 
-    def __init__(self, recipe):
-        # nf: initial action state (refactor later on)
-        # dirty implementation right now because of data structure
-        self.state = [k for k,v in recipe.iteritems() if 'first' in v][0]
+    def __init__(self, cfg):
+        self.state = Recipe.getInitialState(cfg)
         self.history = []
-        self.recipe = recipe
+        self.recipe = Recipe.parseFromYml(cfg)
         self.lock = False
         self.terminate = False
 
     def step_over(self):
-        #
         self.state = self.next_state()
         self.history.push(self.state)
         self.unlock()
