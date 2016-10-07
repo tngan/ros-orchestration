@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(bailey_flow)
+project(ros_orchestration)
 
 find_package(catkin REQUIRED COMPONENTS
   rospy
@@ -15,12 +15,12 @@ generate_messages(DEPENDENCIES std_msgs)
 catkin_package(CATKIN_DEPENDS message_runtime std_msgs)
 
 catkin_install_python(PROGRAMS
-  bailey_controller/machine.py
-  bailey_controller/bailey_controller_node.py
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/bailey_controller
+  controller/machine.py
+  controller/controller.py
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/orchestration
 )
 install(FILES
-  bailey_controller/bailey_controller.launch
+  controller/orchestration.launch
   recipes/*.yml
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/bailey_controller
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/orchestration
 )

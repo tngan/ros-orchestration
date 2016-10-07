@@ -1,0 +1,5 @@
+<launch>
+  <node name="orchestration_controller" pkg="ros_orchestration" type="controller.py" output="screen">
+    <param name="recipe" type="string" value="$(find ros_orchestration)/recipes/poc.yml" />
+  </node>
+</launch>

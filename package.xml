@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>bailey_flow</name>
+  <name>ros_orchestration</name>
   <version>1.0.0</version>
-  <description>universal mission controller node</description>
+  <description>A state controller orchestrating ROS nodes</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

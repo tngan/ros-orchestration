@@ -6,12 +6,12 @@ import rospy
 import yaml
 import os
 
-from bailey_flow.srv import *
+from ros_orchestration.srv import *
 
-def bailey_controller_node():
+def orchestration_controller_node():
 
     # initiate a ros node
-    rospy.init_node('bailey_controller_node', anonymous=True)
+    rospy.init_node('orchestration_controller_node', anonymous=True)
 
     # get ros parameters from launch file
     recipe_config = rospy.get_param('~recipe', 'default.yml')
@@ -34,7 +34,7 @@ def bailey_controller_node():
 
     # main loop
     while not rospy.is_shutdown():
-        # kickstart the bailey node with current state
+        # kickstart the orchestration node with current state
         # terminate when the recipe is played successfully
         # TODO timeout may need to make the machine more reliable
         # TODO the services should shutdown itself after issuing the service request to step_over
@@ -50,7 +50,7 @@ def bailey_controller_node():
             kickstart = rospy.ServiceProxy(machine.get_kickstart_topic(), KickstartNode)
             try:
                 response = kickstart()
-                # this lock will be unlock until the step_over call from bailey node is made
+                # this lock will be unlock until the step_over call from orchestration node is made
                 machine.lock()
             except rospy.ServiceException as exc:
                 print("service did not process request: " + str(exc))
@@ -60,6 +60,6 @@ def bailey_controller_node():
 
 if __name__ == "__main__":
     try:
-        bailey_controller_node()
+        orchestration_controller_node()
     except rospy.ROSInterruptException:
         pass
